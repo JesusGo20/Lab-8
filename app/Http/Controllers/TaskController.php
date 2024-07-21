@@ -54,7 +54,7 @@ class TaskController extends Controller
         $task->name = $request->name;
         $task->description = $request->description;
         $task->priority_id = $request->priority;
-        $task->user_id = $request->user;
+        $task->user_id = $user = auth()->user()->id;
         $task->save();
         $task->labels()->sync($request->labels);
         return redirect('/tasks');
